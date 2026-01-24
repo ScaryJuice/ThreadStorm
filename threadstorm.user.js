@@ -38,11 +38,11 @@
             top: 10px;
             right: 10px;
             z-index: 10000;
-            background: #2c2c2c;
-            border: 1px solid #444;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border: 1px solid #2c3e50;
             border-radius: 8px;
             padding: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(15, 52, 96, 0.4), 0 0 20px rgba(52, 152, 219, 0.2);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             opacity: 0;
             transform: translateY(-10px) scale(0.95);
@@ -61,7 +61,7 @@
             width: 180px;
             margin: 5px 0;
             padding: 8px 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 50%, #1e3a8a 100%);
             color: white;
             border: none;
             border-radius: 6px;
@@ -70,12 +70,29 @@
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .threadstorm-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .threadstorm-button:hover::before {
+            left: 100%;
         }
 
         .threadstorm-button:hover {
             transform: translateY(-2px) translateX(2px);
-            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #7c8ff0 0%, #8459a8 100%);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6), 0 0 30px rgba(52, 152, 219, 0.3);
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 50%, #2874a6 100%);
         }
 
         .threadstorm-button:active {
@@ -84,12 +101,14 @@
         }
 
         .threadstorm-button.settings {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 50%, #663399 100%);
             width: 100%;
+            border: 1px solid rgba(155, 89, 182, 0.3);
         }
 
         .threadstorm-button.settings:hover {
-            background: linear-gradient(135deg, #fa4ffc 0%, #ff4478 100%);
+            background: linear-gradient(135deg, #a569bd 0%, #9b59b6 50%, #7d3c98 100%);
+            box-shadow: 0 8px 25px rgba(155, 89, 182, 0.6), 0 0 30px rgba(155, 89, 182, 0.3);
         }
 
         .threadstorm-button:disabled {
@@ -107,14 +126,16 @@
         .threadstorm-progress {
             margin-top: 10px;
             padding: 8px;
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            border: 1px solid rgba(52, 152, 219, 0.3);
             border-radius: 4px;
             font-size: 12px;
-            color: #ccc;
+            color: #64b5f6;
             text-align: center;
             opacity: 0;
             transform: translateY(-5px);
             transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .threadstorm-progress.show {
@@ -128,12 +149,12 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
-            background: #2c2c2c;
-            border: 1px solid #444;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border: 1px solid rgba(52, 152, 219, 0.4);
             border-radius: 8px;
             padding: 20px;
             z-index: 10001;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(15, 52, 96, 0.6), 0 0 30px rgba(52, 152, 219, 0.2);
             min-width: 300px;
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -164,20 +185,28 @@
         }
 
         .modal-title {
-            color: #fff;
+            color: #64b5f6;
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
         }
 
         .modal-input {
             width: 100%;
             padding: 8px;
             margin: 10px 0;
-            background: #1a1a1a;
-            border: 1px solid #444;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(52, 152, 219, 0.3);
             border-radius: 4px;
-            color: #fff;
+            color: #e0f2fe;
+            transition: all 0.3s ease;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
         }
 
         .modal-buttons {
@@ -196,13 +225,27 @@
         }
 
         .modal-button.save {
-            background: #667eea;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             color: white;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .modal-button.save:hover {
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
         }
 
         .modal-button.cancel {
-            background: #444;
-            color: #ccc;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: #bdc3c7;
+            border: 1px solid rgba(149, 165, 166, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .modal-button.cancel:hover {
+            background: linear-gradient(135deg, #4a5f7a 0%, #34495e 100%);
+            color: #ecf0f1;
         }
 
         .threadstorm-toggle {
@@ -210,21 +253,23 @@
             top: 10px;
             right: 10px;
             z-index: 9999;
-            background: #2c2c2c;
-            border: 1px solid #444;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border: 1px solid rgba(52, 152, 219, 0.4);
             border-radius: 6px;
             padding: 8px 12px;
-            color: white;
+            color: #64b5f6;
             cursor: pointer;
             font-size: 13px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform: scale(1);
+            box-shadow: 0 2px 10px rgba(15, 52, 96, 0.3);
         }
 
         .threadstorm-toggle:hover {
-            background: #3c3c3c;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
             transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4), 0 0 15px rgba(52, 152, 219, 0.2);
+            color: #3498db;
         }
 
         .threadstorm-toggle:active {
@@ -232,8 +277,10 @@
         }
 
         .threadstorm-toggle.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: #667eea;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 50%, #1e3a8a 100%);
+            border-color: #3498db;
+            color: white;
+            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.6), 0 0 25px rgba(52, 152, 219, 0.3);
         }
     `;
 
