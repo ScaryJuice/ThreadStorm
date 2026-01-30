@@ -339,7 +339,16 @@
                 }
             });
         });
-        return [...new Set(unreadLinks)]; // Remove duplicates
+        
+        // Convert unread links to latest post links
+        const latestLinks = unreadLinks.map(unreadUrl => {
+            // Replace /unread with /latest or similar patterns
+            return unreadUrl.replace(/\/unread$/, '/latest')
+                           .replace(/\/unread\//, '/latest/')
+                           .replace(/\/unread\?/, '/latest?');
+        });
+        
+        return [...new Set(latestLinks)]; // Remove duplicates
     }
 
 
@@ -390,7 +399,7 @@
         container.id = CONFIG.buttonContainerId;
         container.innerHTML = `
             <button class="threadstorm-button" data-action="latest">Open Latest Posts</button>
-            <button class="threadstorm-button" data-action="unread">Open Unread Only</button>
+            <button class="threadstorm-button" data-action="unread">Open Latest from Unread</button>
             <button class="threadstorm-button settings">⚙️ Settings</button>
             <div class="threadstorm-progress" style="display: none;"></div>
         `;
@@ -531,7 +540,7 @@
                         break;
                     case 'unread':
                         urls = getUnreadThreads();
-                        actionName = 'Open Unread Only';
+                        actionName = 'Open Latest from Unread';
                         break;
 
                 }
